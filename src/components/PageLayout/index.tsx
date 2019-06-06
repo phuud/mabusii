@@ -1,78 +1,88 @@
-import * as React from 'react';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import React from "react";
+import { Layout, Menu, Icon } from "antd";
+import "./style.css";
 
-const { Header, Content, Footer, Sider } = Layout;
+import HomePageHeader from "../HomePageHeader";
+import HomePageSteps from "../HomePageSteps"
+
+const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 class PageLayout extends React.Component {
   state = {
-    collapsed: false,
+    collapsed: false
   };
 
-  onCollapse = (collapsed:boolean) => {
+  onCollapse = (collapsed: boolean) => {
     console.log(collapsed);
     this.setState({ collapsed });
   };
 
   render() {
     return (
-      <Layout style={{ minHeight: '100vh' }}>
-        <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
+      <Layout style={{ minHeight: "100vh" }}>
+        <Sider
+          collapsible
+          collapsed={this.state.collapsed}
+          onCollapse={this.onCollapse}
+        >
           <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+          <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
             <Menu.Item key="1">
-              <Icon type="pie-chart" />
-              <span>Option 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="desktop" />
-              <span>Option 2</span>
+              <Icon type="exception" />
+              <span>Tips</span>
             </Menu.Item>
             <SubMenu
               key="sub1"
               title={
                 <span>
-                  <Icon type="user" />
-                  <span>User</span>
+                  <Icon type="tool" />
+                  <span>Tools</span>
                 </span>
               }
             >
-              <Menu.Item key="3">Tom</Menu.Item>
-              <Menu.Item key="4">Bill</Menu.Item>
-              <Menu.Item key="5">Alex</Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub2"
-              title={
-                <span>
-                  <Icon type="team" />
-                  <span>Team</span>
-                </span>
-              }
-            >
-              <Menu.Item key="6">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
+              <Menu.Item key="3">
+                <a
+                  href="https://chrome.google.com/webstore/detail/grammarly-for-chrome/kbfnbcaeplbcioakkpcpgfkobkghlhen"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Grammarly
+                </a>
+              </Menu.Item>
+              <Menu.Item key="4">
+                <a
+                  href="https://www.youdao.com/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Youdao Dict
+                </a>
+              </Menu.Item>
             </SubMenu>
             <Menu.Item key="9">
-              <Icon type="file" />
-              <span>File</span>
+              <Icon type="question-circle" />
+              <span>About</span>
             </Menu.Item>
           </Menu>
         </Sider>
         <Layout>
-          <Header style={{ background: '#fff', padding: 0 }} />
-          <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>Bill is a cat.</div>
+          {/* <Header style={{ background: "#fff", padding: 0 }}>
+            
+          </Header> */}
+          <Content style={{ margin: 16 }}>
+            <HomePageHeader />  
+            <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
+              <HomePageSteps />
+            </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+          <Footer style={{ textAlign: "center" }}>
+            Ant Design ©2018 Created by Ant UED
+          </Footer>
         </Layout>
       </Layout>
     );
   }
 }
 
-export default PageLayout
+export default PageLayout;
