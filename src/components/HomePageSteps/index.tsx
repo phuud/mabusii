@@ -1,5 +1,6 @@
 import React from "react";
 import { Steps, Button, message, Input } from "antd";
+import HightLightedText from "../HighLightedText";
 
 import "./style.css";
 
@@ -7,24 +8,11 @@ const { TextArea } = Input;
 
 const { Step } = Steps;
 
-const steps = [
-  {
-    title: "Input",
-    content: <TextArea rows={4} />
-  },
-  {
-    title: "In Progress",
-    content: "Second-content"
-  },
-  {
-    title: "Done",
-    content: "Last-content"
-  }
-];
-
 export default class HomePageSteps extends React.Component {
   state = {
-    current: 0
+    current: 0,
+    textToHighlight: "",
+    highlightedWords: ['the']
   };
 
   next() {
@@ -37,8 +25,36 @@ export default class HomePageSteps extends React.Component {
     this.setState({ current });
   }
 
+  onChangeTextInput = value => {
+    this.setState({
+      textToHighlight: value
+    });
+  };
+
   render() {
-    const { current } = this.state;
+    const { current, textToHighlight, highlightedWords } = this.state;
+
+    const steps = [
+      {
+        title: "Input",
+        content: (
+          <TextArea
+            rows={10}
+            value={textToHighlight}
+            onChange={e => this.onChangeTextInput(e.target.value)}
+          />
+        )
+      },
+      {
+        title: "In Progress",
+        content: <HightLightedText textToHighlight={textToHighlight} highlightedWords={highlightedWords} />
+      },
+      {
+        title: "Done",
+        content: "Last-content"
+      }
+    ];
+
     return (
       <div>
         <Steps current={current}>
