@@ -3,7 +3,7 @@ import { Layout, Menu, Icon } from "antd";
 import "./style.css";
 
 import HomePageHeader from "../HomePageHeader";
-import HomePageSteps from "../HomePageSteps"
+import HomePageSteps from "../HomePageSteps";
 
 const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -71,7 +71,7 @@ class PageLayout extends React.Component {
             
           </Header> */}
           <Content style={{ margin: 16 }}>
-            <HomePageHeader />  
+            <HomePageHeader />
             <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
               <HomePageSteps />
             </div>
