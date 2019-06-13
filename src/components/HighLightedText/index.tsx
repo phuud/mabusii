@@ -22,7 +22,7 @@ export default class HighLightedText extends React.PureComponent<Props, State> {
     const { textToHighlight, highlightedWords } = this.props;
     return (
       <Highlighter
-        highlightClassName="YourHighlightClass"
+        highlightClassName="highlight_class"
         searchWords={highlightedWords}
         autoEscape={true}
         textToHighlight={textToHighlight}

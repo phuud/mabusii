@@ -6,22 +6,25 @@
   flex: 1;
   margin-right: 2rem;
 }
-.extraContent {
+.header_extra_content {
   min-width: 240px;
-  text-align: right;
+  text-align: center;
 }
-.extraContent img {
+.header_extra_content img {
   max-width: 300px;
 }
-.contentLink {
-  padding-top: 16px;
+.header_extra_content i {  
+  font-size: 120px;
 }
-.contentLink a {
+.header_content_link {
+  padding-top: 2px;
+}
+.header_content_link a {
   display: inline-block;
   vertical-align: text-top;
   margin-right: 32px;
   color: #348bff;
 }
-.contentLink a img {
+.header_content_link a img {
   margin-right: 8px;
 }

@@ -1,13 +1,43 @@
-.steps-content {
+.steps_content {
   margin-top: 16px;
   border: 1px dashed #e9e9e9;
   border-radius: 6px;
   background-color: #fafafa;
-  min-height: 200px;
+  min-height: 220px;
   text-align: center;
   padding: 20px;
 }
 
-.steps-action {
+.steps_action {
   margin-top: 24px;
+  text-align: center;
+}
+
+.spin_box {
+  line-height: 210px;
+}
+
+.input_box {
+  font-size: 16px;
+}
+
+.result_box {
+  display: flex;
+}
+
+.result_box .result_text {
+  width: 60%;
+  margin-right: 2%;
+  text-align: left;
+  font-size: 16px;
+}
+
+.result_box .result_list {
+  width: 38%;
+  background: #fff;
+  font-size: 16px;
+}
+
+.result_box .result_list span {
+  margin: 0 10px 3px;
 }

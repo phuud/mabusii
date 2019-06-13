@@ -1,6 +1,7 @@
 import React from "react";
-import { Steps, Button, message, Input } from "antd";
+import { Steps, Button, message, Input, Spin, List, Icon, Card } from "antd";
 import HightLightedText from "../HighLightedText";
+import { REPLACEMENT } from "../../constants/Replacement";
 
 import "./style.css";
 
@@ -12,22 +13,33 @@ export default class HomePageSteps extends React.Component {
   state = {
     current: 0,
     textToHighlight: "",
-    highlightedWords: ['the']
+    highlightedWords: []
   };
 
   next() {
-    const current = this.state.current + 1;
-    this.setState({ current });
+    if (this.state.textToHighlight) {
+      const current = this.state.current + 1;
+      this.setState({ current });
+      if (current === 1) {
+        setTimeout(() => this.next(), 300);
+      }
+    } else {
+      message.warning("Invalid Input!");
+    }
   }
 
   prev() {
-    const current = this.state.current - 1;
+    const current = this.state.current === 2 ? 0 : this.state.current - 1;
     this.setState({ current });
   }
 
   onChangeTextInput = value => {
+    const highlightedWords = Object.keys(REPLACEMENT).filter(
+      key => value.indexOf(key) > -1
+    );
     this.setState({
-      textToHighlight: value
+      textToHighlight: value,
+      highlightedWords
     });
   };
 
@@ -39,7 +51,8 @@ export default class HomePageSteps extends React.Component {
         title: "Input",
         content: (
           <TextArea
-            rows={10}
+            className="input_box"
+            rows={8}
             value={textToHighlight}
             onChange={e => this.onChangeTextInput(e.target.value)}
           />
@@ -47,11 +60,38 @@ export default class HomePageSteps extends React.Component {
       },
       {
         title: "In Progress",
-        content: <HightLightedText textToHighlight={textToHighlight} highlightedWords={highlightedWords} />
+        content: <Spin size="large" className="spin_box" />
       },
       {
         title: "Done",
-        content: "Last-content"
+        content: (
+          <div className="result_box">
+            <Card title="Origin Text" className="result_text">
+              <HightLightedText
+                textToHighlight={textToHighlight}
+                highlightedWords={highlightedWords}
+              />
+            </Card>
+            <List
+              bordered
+              header={<b>Tips</b>}
+              className="result_list"
+              dataSource={highlightedWords}
+              renderItem={item => (
+                <List.Item>
+                  <Icon
+                    type="info-circle"
+                    theme="twoTone"
+                    twoToneColor="#52c41a"
+                  />
+                  <span>{item}</span>
+                  <Icon type="arrow-right" />
+                  <span><b>{REPLACEMENT[item]}</b></span>
+                </List.Item>
+              )}
+            />
+          </div>
+        )
       }
     ];
 
@@ -62,24 +102,16 @@ export default class HomePageSteps extends React.Component {
             <Step key={item.title} title={item.title} />
           ))}
         </Steps>
-        <div className="steps-content">{steps[current].content}</div>
-        <div className="steps-action">
-          {current < steps.length - 1 && (
+        <div className="steps_content">{steps[current].content}</div>
+        <div className="steps_action">
+          {current === 0 && (
             <Button type="primary" onClick={() => this.next()}>
-              Next
+              Check!
             </Button>
           )}
-          {current === steps.length - 1 && (
-            <Button
-              type="primary"
-              onClick={() => message.success("Processing complete!")}
-            >
-              Done
-            </Button>
-          )}
-          {current > 0 && (
+          {current === 2 && (
             <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
-              Previous
+              Reset
             </Button>
           )}
         </div>
