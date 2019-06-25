@@ -1,28 +1,34 @@
-import React from 'react';
-// import logo from './logo.svg';
-import PageLayout from './components/PageLayout'
-import './App.css';
+import React from "react";
+import {
+  Redirect,
+  Route,
+  Switch,
+  BrowserRouter as Router
+} from "react-router-dom";
+import PageLayout from "./components/PageLayout";
+import { ROUTER_PATH } from "./constants/Router.constants";
+import NotFound from "./components/NotFound";
+
+import EigoTipsPage from "./pages/EigoTipsPage";
+import AboutPage from "./pages/AboutPage";
+
+import "./App.css";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <PageLayout />
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
+      <Router>
+        <PageLayout>
+          <Switch>
+            <Route path={ROUTER_PATH.TIPS} component={EigoTipsPage} />
+            <Route path={ROUTER_PATH.ABOUT} component={AboutPage} />
+            <Redirect from="/" exact to={ROUTER_PATH.TIPS} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </PageLayout>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
