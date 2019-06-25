@@ -1,15 +1,12 @@
 import React from "react";
-import { Layout, Menu, Icon } from "antd";
+import { Layout } from "antd";
 import "./style.css";
 
 import { withRouter } from "react-router-dom";
 
-import HomePageHeader from "../HomePageHeader";
-import HomePageSteps from "../HomePageSteps";
 import Sidebar from "../Sidebar";
 
-const { Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+const { Footer } = Layout;
 
 export function PageLayout({ children }: { children: React.ReactNode }) {
   return (

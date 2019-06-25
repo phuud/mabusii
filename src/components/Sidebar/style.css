@@ -6,6 +6,6 @@
   background-position: center;
 }
 
-.link {
+.ant-menu-inline .link {
   display: inline!important;
 }

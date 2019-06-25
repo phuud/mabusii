@@ -1,12 +1,11 @@
 import React from "react";
-import { Layout, Menu, Icon } from "antd";
+import { Layout, Menu } from "antd";
 import "./style.css";
 
 import HomePageHeader from "../../components/HomePageHeader";
 import HomePageSteps from "../../components/HomePageSteps";
 
-const { Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+const { Content } = Layout;
 
 class EigoTipsPage extends React.Component {
   render() {
