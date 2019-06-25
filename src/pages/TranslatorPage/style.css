@@ -1,0 +1,17 @@
+.logo {
+  height: 45px;
+  margin: 16px;
+  background-image: url("https://i.bmp.ovh/imgs/2019/06/b2a42677639d6dd0.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.myFrame {
+  -ms-zoom: 1;
+  -moz-transform: scale(1);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(1);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(1);
+  -webkit-transform-origin: 0 0;
+}

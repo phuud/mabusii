@@ -26,8 +26,12 @@ export default class Sidebar extends React.Component {
         <div className="logo" />
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
           <Menu.Item key="1">
-            <Icon type="exception" />
+            <Icon type="highlight" />
             <Link to="/tips" className='link'>Tips</Link>
+          </Menu.Item>
+          <Menu.Item key="2">
+            <Icon type="exception" />
+            <Link to="/translator" className='link'>Translator</Link>
           </Menu.Item>
           <SubMenu
             key="sub1"
