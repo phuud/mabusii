@@ -16,7 +16,7 @@ class TranslatorPage extends React.Component {
           position="relative"
         />
         <Iframe
-          url="https://cn.bing.com/translator/?mkt=zh-CN"
+          url="https://www.youdao.com/"
           width="80%"
           height="450px"
           id="myId"
@@ -25,7 +25,7 @@ class TranslatorPage extends React.Component {
           position="relative"
         />
         <Iframe
-          url="https://www.youdao.com/"
+          url="https://cn.bing.com/translator/?mkt=zh-CN"
           width="80%"
           height="450px"
           id="myId"

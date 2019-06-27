@@ -1,7 +1,7 @@
 import React from "react";
 import { Steps, Button, message, Input, Spin, List, Icon, Card } from "antd";
 import HightLightedText from "../HighLightedText";
-import { REPLACEMENT } from "../../constants/Replacement";
+import { fetchGist } from "../../services/nextFetch";
 
 import "./style.css";
 
@@ -10,10 +10,21 @@ const { TextArea } = Input;
 const { Step } = Steps;
 
 export default class HomePageSteps extends React.Component {
+  componentDidMount() {
+    fetchGist("egioTips.json")
+    .then((res) => {
+      console.log(res);
+      this.setState({ 
+        replacement: res 
+      })
+    })
+  }
+
   state = {
     current: 0,
     textToHighlight: "",
-    highlightedWords: []
+    highlightedWords: [],
+    replacement: {}
   };
 
   next() {
@@ -34,7 +45,7 @@ export default class HomePageSteps extends React.Component {
   }
 
   onChangeTextInput = value => {
-    const highlightedWords = Object.keys(REPLACEMENT).filter(
+    const highlightedWords = Object.keys(this.state.replacement).filter(
       key => value.indexOf(key) > -1
     );
     this.setState({
@@ -44,7 +55,7 @@ export default class HomePageSteps extends React.Component {
   };
 
   render() {
-    const { current, textToHighlight, highlightedWords } = this.state;
+    const { current, textToHighlight, highlightedWords, replacement } = this.state;
 
     const steps = [
       {
@@ -86,7 +97,7 @@ export default class HomePageSteps extends React.Component {
                   />
                   <span>{item}</span>
                   <Icon type="arrow-right" />
-                  <span><b>{REPLACEMENT[item]}</b></span>
+                  <span><b>{replacement[item]}</b></span>
                 </List.Item>
               )}
             />
