@@ -11,7 +11,7 @@ const { Step } = Steps;
 
 export default class HomePageSteps extends React.Component {
   componentDidMount() {
-    fetchGist("egioTips.json")
+    fetchGist("eigoTips.json")
     .then((res) => {
       console.log(res);
       this.setState({ 

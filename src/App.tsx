@@ -10,6 +10,7 @@ import { ROUTER_PATH } from "./constants/Router.constants";
 import NotFound from "./components/NotFound";
 
 import EigoTipsPage from "./pages/EigoTipsPage";
+import EigoTipsTablePage from "./pages/EigoTipsTablePage";
 import AboutPage from "./pages/AboutPage";
 import TranslatorPage from "./pages/TranslatorPage";
 
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         <PageLayout>
           <Switch>
             <Route path={ROUTER_PATH.TIPS} component={EigoTipsPage} />
+            <Route path={ROUTER_PATH.TIPS_LIST} component={EigoTipsTablePage} />
             <Route path={ROUTER_PATH.ABOUT} component={AboutPage} />
             <Route path={ROUTER_PATH.TRANSLATOR} component={TranslatorPage} />
             <Redirect from="/" exact to={ROUTER_PATH.TIPS} />

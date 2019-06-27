@@ -20,6 +20,13 @@ const content = (
         />
         How to use...
       </a>
+      <a href="/tips-list">
+        <img
+          src="https://gw.alipayobjects.com/zos/rmsportal/NbuDUAuBlIApFuDvWiND.svg"
+          alt="info"
+        />
+        Tips List
+      </a>
     </p>
   </div>
 );
