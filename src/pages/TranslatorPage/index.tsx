@@ -8,7 +8,7 @@ class TranslatorPage extends React.Component {
       <div>
         <Iframe
           url="https://fanyi.baidu.com/"
-          width="100%"
+          width="80%"
           height="450px"
           id="myId"
           className="myFrame"
@@ -17,7 +17,7 @@ class TranslatorPage extends React.Component {
         />
         <Iframe
           url="https://cn.bing.com/translator/?mkt=zh-CN"
-          width="100%"
+          width="80%"
           height="450px"
           id="myId"
           className="myFrame"
@@ -26,7 +26,7 @@ class TranslatorPage extends React.Component {
         />
         <Iframe
           url="https://www.youdao.com/"
-          width="100%"
+          width="80%"
           height="450px"
           id="myId"
           className="myFrame"
